@@ -14,8 +14,10 @@ public class CommandHandler implements CommandExecutor{
 
 	@Override
 	public boolean onCommand(CommandSender s, Command cmd, String l, String[] args) {
-		if(cmd.getName().equalsIgnoreCase("ds")){
-			
+		if(DataShuttle.isConnected && DataShuttle.isReady){
+			if(cmd.getName().equalsIgnoreCase("ds")){
+				
+			}
 		}
 		return false;
 	}
