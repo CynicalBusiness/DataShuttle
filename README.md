@@ -1,4 +1,5 @@
-#DataShuttle# ####Mayteck Networks Data Shuttle Bukkit plugin.####
+#DataShuttle#
+####Mayteck Networks Data Shuttle Bukkit plugin.####
 ***
 
 ### Commands ###
