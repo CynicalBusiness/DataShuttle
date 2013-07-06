@@ -1,0 +1,11 @@
+name: DataShuttle
+main: net.mayateck.DataShuttle.DataShuttle
+version: Alpha 1.01.00
+
+commands:
+  ds:
+    description: DataShuttle configuration command.
+    usage: /ds [sub-command] <args>
+    permission: datashuttle.config
+    permission-message: You do not have permission to configure DataShuttle!
+    
