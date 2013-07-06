@@ -1,10 +1,14 @@
 package net.mayateck.DataShuttle;
 
+import java.io.File;
+
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 //@SuppressWarnings("unused")
 public final class DataShuttle extends JavaPlugin{
+	
+	public static File jarFile = new File(DataShuttle.class.getProtectionDomain().getCodeSource().getLocation().getPath());
 	
 	public static boolean isReady = false;
 	public static boolean isConnected = false;
@@ -18,7 +22,17 @@ public final class DataShuttle extends JavaPlugin{
 	@Override
 	public void onEnable(){
 		getLogger().info("DataShuttle invoked. Attemping database connection...");
-		isConnected = FetchNetworkData.checkConnectionToServer();
+		getLogger().info("Checksum for this version: "+FetchNetworkData.checksum);
+		int connectAttempt = FetchNetworkData.checkConnectionToServer();
+		if (connectAttempt==0){
+			isConnected = true;
+		} else if(connectAttempt==1){
+			getLogger().info("An error occured while contacting the server.");
+		} else if(connectAttempt==2){
+			getLogger().info("The checksum for this JAR file is invalid. (Is DataShuttle up-to-date?)");
+		} else if(connectAttempt==3){
+			getLogger().info("The database is currently undergoing maintinence.");
+		}
 		if (isConnected == true){
 			getLogger().info("Connection achieved. DataShuttle is now registering remaining data...");
 			getCommand("ds").setExecutor(new CommandHandler(this));
